@@ -22,4 +22,13 @@
     0
     read-input))
 
-(part1)
+(defn part2 []
+  (reduce
+    (fn [acc e]
+      (let [[a b c] (sort (map #(Integer/parseInt %) (str/split e #"x")))]
+        (+
+         acc
+         (+ (* 2 a) (* 2 b))
+         (* a b c))))
+    0
+    read-input))
