@@ -25,3 +25,16 @@
       (recur (next strings) (if (valid? (first strings))
                               (inc result)
                               result)))))
+
+(defn valid2? [s]
+  (and (re-find #"([a-z])([a-z])\1" s)
+       (re-find #"([a-z])([a-z]).*\1\2" s)))
+
+(defn part2 []
+  (loop [strings read-input
+         result  0]
+    (if (empty? strings)
+      result
+      (recur (next strings) (if (valid2? (first strings))
+                              (inc result)
+                              result)))))
